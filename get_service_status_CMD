@@ -9,7 +9,7 @@ enum Status {
 	SYSTEMCTL_FAILED = 256
 };
 
-bool ServiceStatus(const std::string& serviceName) {
+bool getServiceStatus(const std::string& serviceName) {
     int isActive = system( ("systemctl is-active --quiet " + serviceName).c_str() );
     if (isActive == ACTIVE) {
 		std::cout << serviceName << " is active" << std::endl;
@@ -34,6 +34,6 @@ bool ServiceStatus(const std::string& serviceName) {
 }
 
 int main() {
-  ServiceStatus("ssh.service");
+  getServiceStatus("ssh.service");
   return 0;
 }
